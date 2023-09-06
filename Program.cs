@@ -1,31 +1,22 @@
-﻿Random random = new Random();
-int daysUntilExpiration = random.Next(12);
-int discountPercentage = 0;
+﻿/*
+    Reverses the provided message, prints out the
+    reversed message and then counts how many times
+    the letter 'o' appears in the message 
+*/
+string str = "The quick brown fox jumps over the lazy dog.";
+char[] charMessage = str.ToCharArray();
 
-if (daysUntilExpiration > 10)
+Array.Reverse(charMessage);
+
+int x = 0;
+foreach (char i in charMessage)
 {
-Console.WriteLine(daysUntilExpiration);
-}
-else if (daysUntilExpiration <= 0)
-{
-    Console.WriteLine("Your subscription has expired.");
-}
-else if (daysUntilExpiration == 1)
-{
-    Console.WriteLine("Your subscription expires within a day!");
-    discountPercentage = 20;
-}
-else if (daysUntilExpiration <= 5)
-{
-    Console.WriteLine($"Your subscription expires in {daysUntilExpiration} days.");
-    discountPercentage = 10;
-}
-else if (daysUntilExpiration <= 10)
-{
-    Console.WriteLine("Your subscription will expire soon. Renew now!");
+    if (i == 'o')
+    {
+        x++;
+    }
 }
 
-if (discountPercentage > 0)
-{
-    Console.WriteLine($"Renew now and save {discountPercentage}%!");
-}
+string new_message = new String(charMessage);
+Console.WriteLine(new_message);
+Console.WriteLine($"'o' appears {x} times.");
