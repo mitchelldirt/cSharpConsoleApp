@@ -1,37 +1,31 @@
-﻿Random dice = new Random();
+﻿Random random = new Random();
+int daysUntilExpiration = random.Next(12);
+int discountPercentage = 0;
 
-int roll1 = dice.Next(1, 7);
-int roll2 = dice.Next(1, 7);
-int roll3 = dice.Next(1, 7);
+if (daysUntilExpiration > 10)
+{
+Console.WriteLine(daysUntilExpiration);
+}
+else if (daysUntilExpiration <= 0)
+{
+    Console.WriteLine("Your subscription has expired.");
+}
+else if (daysUntilExpiration == 1)
+{
+    Console.WriteLine("Your subscription expires within a day!");
+    discountPercentage = 20;
+}
+else if (daysUntilExpiration <= 5)
+{
+    Console.WriteLine($"Your subscription expires in {daysUntilExpiration} days.");
+    discountPercentage = 10;
+}
+else if (daysUntilExpiration <= 10)
+{
+    Console.WriteLine("Your subscription will expire soon. Renew now!");
+}
 
-int score = roll1 + roll2 + roll3;
-
-if ((roll1 == roll2) && (roll1 == roll3))
+if (discountPercentage > 0)
 {
-    Console.WriteLine("Triples... WHOA! +6 points");
-    score += 6;
-}
-else if ((roll1 == roll2) || (roll1 == roll3) || (roll2 == roll3))
-{
-    Console.WriteLine("You rolled doubles! +2 points");
-    score += 2;
-}
-
-Console.WriteLine($"The total score is from your rolls ({roll1}, {roll2}, {roll3}) is: {score}");
-
-if (score >= 16)
-{
-    Console.WriteLine("You win... a new car! 🎉");
-}
-else if (score >= 10)
-{
-    Console.WriteLine("Heck yeah, new laptop for you 😎");
-}
-else if (score >= 7)
-{
-    Console.WriteLine("Nice, you get a new VACATION 🏖️");
-}
-else
-{
-    Console.WriteLine("You get a new kitten 🐈");
+    Console.WriteLine($"Renew now and save {discountPercentage}%!");
 }
