@@ -3,7 +3,6 @@
 /Users/mitchellm/Documents/pRepos/cSharpConsoleApp/bin/Debug/net7.0/cSharpConsoleApp.runtimeconfig.json
 /Users/mitchellm/Documents/pRepos/cSharpConsoleApp/bin/Debug/net7.0/cSharpConsoleApp.dll
 /Users/mitchellm/Documents/pRepos/cSharpConsoleApp/bin/Debug/net7.0/cSharpConsoleApp.pdb
-/Users/mitchellm/Documents/pRepos/cSharpConsoleApp/obj/Debug/net7.0/cSharpConsoleApp.csproj.AssemblyReference.cache
 /Users/mitchellm/Documents/pRepos/cSharpConsoleApp/obj/Debug/net7.0/cSharpConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
 /Users/mitchellm/Documents/pRepos/cSharpConsoleApp/obj/Debug/net7.0/cSharpConsoleApp.AssemblyInfoInputs.cache
 /Users/mitchellm/Documents/pRepos/cSharpConsoleApp/obj/Debug/net7.0/cSharpConsoleApp.AssemblyInfo.cs
