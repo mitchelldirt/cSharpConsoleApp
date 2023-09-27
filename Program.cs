@@ -1,110 +1,179 @@
-﻿// Cannot implicitly convert string to int, but can go the other way
-// int first = 5;
-// string second = "7";
-// string result = second + first;
+﻿// string[] pallets = {"B14", "A11", "B12", "A13"};
+//
+// Console.WriteLine("Sorted...");
+// Array.Sort(pallets);
+// foreach (var pallet in pallets)
+// {
+//     Console.WriteLine($"-- {pallet}");
+// }
+//
+// Console.WriteLine("");
+// Console.WriteLine("Reversed...");
+// Array.Reverse(pallets);
+// foreach (var pallet in pallets)
+// {
+//     Console.WriteLine($"-- {pallet}");
+// }
+
+// string[] pallets = { "B14", "A11", "B12", "A13" };
+// Console.WriteLine("");
+//
+// Array.Clear(pallets, 0, 2);
+// Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
+// foreach (var pallet in pallets)
+// {
+//     Console.WriteLine($"-- {pallet}");
+// }
+//
+// Console.WriteLine("");
+// Array.Resize(ref pallets, 6);
+// Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
+//
+// pallets[4] = "C01";
+// pallets[5] = "C02";
+//
+// foreach (var pallet in pallets)
+// {
+//     Console.WriteLine($"-- {pallet}");
+// }
+//
+// Console.WriteLine("");
+// Array.Resize(ref pallets, 3);
+// Console.WriteLine($"Resizing 3 ... count: {pallets.Length}");
+//
+// foreach (var pallet in pallets)
+// {
+//     Console.WriteLine($"-- {pallet}");
+// }
+
+// string value = "abc123";
+// char[] valueArray = value.ToCharArray();
+// Array.Reverse(valueArray);
+// // string result = new string(valueArray);
+// string result = String.Join(",", valueArray);
+// Console.WriteLine(result);
+//
+// string[] items = result.Split(',');
+// foreach (string item in items)
+// {
+//     Console.WriteLine(item);
+// }
+
+// string result = "";
+// string pangram = "The quick brown fox jumps over the lazy dog";
+// string[] splitPangram = pangram.Split(" ");
+// foreach (var word in splitPangram)
+// {
+//    char[] wordArray = word.ToCharArray();
+//    Array.Reverse(wordArray);
+//    result += new string(wordArray) + " ";
+// }
+//
 // Console.WriteLine(result);
 
-// int myInt = 3;
-// Console.WriteLine($"int: {myInt}");
-
-// this is a 'widening conversion' because decimal can hold more information than int can
-// decimal myDecimal = myInt;
-// Console.WriteLine($"decimal: {myDecimal}");
-
-// decimal myDecimal = 3.14m;
-// Console.WriteLine($"decimal: {myDecimal}");
-
-// Converting a decimal to an int causes it to lose data because int only stores whole numbers
-// This is an example of a 'narrowing conversion'
-// int myInt = (int)myDecimal;
-// Console.WriteLine($"int: {myInt}");
-
-// decimal myDecimal = 1.23456789m;
-// This is a narrowing conversion since you'll lose some precision that you had using the float type
-// float myFloat = (float)myDecimal;
+// string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
 //
-// Console.WriteLine($"Decimal: {myDecimal}");
-// Console.WriteLine($"Float  : {myFloat}");
-
-// You can perform data conversion in 3 ways:
-
-//1. Helper method on data type int.TryParse();
-//2. Helper method on the variable 5.ToString();
-//3. Convert class
-
-// int first = 5;
-// int second = 7;
-// string message = first.ToString() + second.ToString();
-// Console.WriteLine(message);
-
-// string first = "5";
-// string second = "7";
-// int sum = int.Parse(first) + int.Parse(second);
-// Console.WriteLine(sum);
-
-// string value1 = "5";
-// string value2 = "7";
-//
-// int result = Convert.ToInt32(value1) * Convert.ToInt32(value2);
-// Console.WriteLine(result);
-
-
-// Why would you use Convert class over the int.TryParse method? The convert class will round up where tryparse just truncates
-// everything after the decimal
-
-// int value = (int)1.5m; // 1
-// Console.WriteLine(value);
-//
-// int value2 = Convert.ToInt32(1.5m); // 2
-// Console.WriteLine(value2);
-
-// string value = "bad";
-// int result = 0;
-// if (int.TryParse(value, out result))
+// string[] orderIds = orderStream.Split(",");
+// Array.Sort(orderIds);
+// foreach (var orderId in orderIds)
 // {
-//     Console.WriteLine($"Measurement: {result}");
-// }
-// else
-// {
-//     Console.WriteLine("Unable to report the measurement.");
-// }
-// if (result > 0)
-//     Console.WriteLine($"Measurement (w/ offset): {50 + result}");
-
-// string[] values = { "12.3", "45", "ABC", "11", "DEF" };
-//
-// decimal total = 0;
-// string message = "";
-// foreach (var value in values)
-// {
-//     decimal result = 0;
-//     if (decimal.TryParse(value, out result))
+//     if (orderId.Length == 4)
 //     {
-//         total += result;
+//         Console.WriteLine(orderId);
 //     }
 //     else
 //     {
-//         message += value;
+//         Console.WriteLine($"{orderId}\t- Error");
 //     }
 // }
+
+// string first = "Hello";
+// string second = "World";
+// Console.WriteLine("{1} {0}!", first, second);
+// Console.WriteLine("{0} {0} {0}!", first, second);
+
+// string first = "Hello";
+// string second = "World";
+// Console.WriteLine($"{first} {second}!");
+// Console.WriteLine($"{second} {first}!");
+// Console.WriteLine($"{first} {first} {first}!");
+
+// decimal price = 123.45m;
+// int discount = 50;
+// Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+
+// decimal measurment = 123456.789122222222m;
+// Console.WriteLine($"Measurement: {measurment:N8} units");
 //
-// Console.WriteLine($"Message {message}");
-// Console.WriteLine($"Total: {total}");
+// decimal tax = .36785m;
+// Console.WriteLine($"Tax rate: {tax:P2}");
 
-int value1 = 12;
-decimal value2 = 6.2m;
-float value3 = 4.3f;
+// decimal price = 67.55m;
+// decimal salePrice = 59.99m;
+//
+// string yourDiscount = String.Format("You saved {0:C2} off the regular {1:C2} price. ", (price - salePrice), price);
+// string yourDiscount2 = $"You saved {(price - salePrice):C2} off the regular {price:C2} price. ";
+//
+// yourDiscount2 += $"A discount of {((price - salePrice)/price):P2}!"; //inserted
+//
+//
+// Console.WriteLine(yourDiscount2);
 
-// Your code here to set result1
-// Hint: You need to round the result to nearest integer (don't just truncate)
-int result1 = Convert.ToInt32((decimal)value1 / value2);
-Console.WriteLine($"Divide value1 by value2, display the result as an int: {result1}");
+// int invoiceNumber = 1201;
+// decimal productShares = 25.4568m;
+// decimal subtotal = 2750.00m;
+// decimal taxPercentage = .15825m;
+// decimal total = 3185.19m;
+//
+// Console.WriteLine($"Invoice Number: {invoiceNumber}");
+// Console.WriteLine($"Shares: {productShares:N3} Product");
+// Console.WriteLine($"\tSub Total: {subtotal:C2}");
+// Console.WriteLine($"\t\tTax: {taxPercentage:P2}");
+// Console.WriteLine($"\tTotal Billed: {total:C2}");
 
-// Your code here to set result2
-decimal result2 = value2 / (decimal)value3;
-Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {result2}");
+// string input = "Pad this";
+// Console.WriteLine(input.PadRight(12, '-'));
 
-// Your code here to set result3
-float result3 = value3 / value1;
-Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
+// string paymentId = "769C";
+// string payeeName = "Mr. Stephen Ortega";
+// string paymentAmount = $"{5000:C2}";
+//
+// var formattedLine = paymentId.PadRight(6);
+// formattedLine += payeeName.PadRight(24);
+// formattedLine += paymentAmount.PadLeft(10);
+//
+// Console.WriteLine("1234567890123456789012345678901234567890");
+// Console.WriteLine(formattedLine);
 
+string customerName = "Ms. Barros";
+
+string currentProduct = "Magic Yield";
+int currentShares = 2975000;
+decimal currentReturn = 0.1275m;
+decimal currentProfit = 55000000.0m;
+
+string newProduct = "Glorious Future";
+decimal newReturn = 0.13125m;
+decimal newProfit = 63000000.0m;
+
+// Your logic here
+Console.WriteLine($"Dear {customerName}");
+Console.WriteLine($"As a customer of our {currentProduct} offering we are excited to tell you about a new financial product that would dramatically increase your return.\n");
+Console.WriteLine($"Currently, you own {currentShares:N2} shares at a return of {currentReturn:P2}.\n");
+Console.WriteLine($"Our new product, {newProduct} offers a return of {newReturn:P2}. Give your current volume, your potential profit would be {newProfit:C2}.\n");
+Console.WriteLine("Here's a quick comparison:\n");
+
+var currentProductF = currentProduct.PadRight(24);
+var newProductF = newProduct.PadRight(24);
+
+var currentReturnF = $"{currentReturn:P2}".PadRight(10);
+var newReturnF = $"{newReturn:P2}".PadRight(10);
+
+Console.WriteLine($"{currentProductF}{currentReturnF}{currentProfit:C2}");
+Console.WriteLine($"{newProductF}{newReturnF}{newProfit:C2}");
+
+string comparisonMessage = "";
+
+// Your logic here
+
+Console.WriteLine(comparisonMessage);
