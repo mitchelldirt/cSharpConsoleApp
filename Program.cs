@@ -1,229 +1,350 @@
-﻿using System;
+﻿// void SayHello()
+// {
+//     Console.WriteLine("Hello World!");
+// }
+//
+// SayHello();
 
-// ourAnimals array will store the following: 
-string animalSpecies = "";
-string animalID = "";
-string animalAge = "";
-string animalPhysicalDescription = "";
-string animalPersonalityDescription = "";
-string animalNickname = "";
-string suggestedDonation = "";
+// int[] a = {1,2,3,4,5};
+//
+// Console.WriteLine("Contents of Array:");
+// PrintArray();
+//
+// void PrintArray()
+// {
+//     foreach (var x in a)
+//     {
+//         Console.WriteLine($"{x}");
+//     }
+// }    
 
-// variables that support data entry
-int maxPets = 8;
-string? readResult;
-string menuSelection = "";
-decimal decimalDonation = 0.00m;
+// void DisplayRandomNumbers()
+// {
+//     var rand = new Random();
+//
+//     for (var i = 0; i < 5; i++)
+//     {
+//         Console.WriteLine(rand.Next(1, 100));
+//     }
+// }
+//
+// DisplayRandomNumbers();
 
-// array used to store runtime data
-string[,] ourAnimals = new string[maxPets, 7];
+// EXERCISE CREATE REUSABLE METHOD TO CLEAN UP DUPLICATED CODE
 
-// sample data ourAnimals array entries
-for (int i = 0; i < maxPets; i++)
+// using System;
+//
+// int[] times = {800, 1200, 1600, 2000};
+// int diff = 0;
+//
+// Console.WriteLine("Enter current GMT");
+// int currentGMT = Convert.ToInt32(Console.ReadLine());
+//
+// Console.WriteLine("Current Medicine Schedule:");
+// FormatAndDisplayMedicalTimes(times);
+//
+// Console.WriteLine();
+//
+// Console.WriteLine("Enter new GMT");
+// int newGMT = Convert.ToInt32(Console.ReadLine());
+//
+// if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
+// {
+//     Console.WriteLine("Invalid GMT");
+// }
+// else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0) 
+// {
+//     diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
+//
+//     /* Adjust the times by adding the difference, keeping the value within 24 hours */
+//     AdjustTimes();
+// } 
+// else 
+// {
+//     diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
+//
+//     /* Adjust the times by adding the difference, keeping the value within 24 hours */
+//     AdjustTimes();
+// }
+//
+// Console.WriteLine("New Medicine Schedule:");
+// FormatAndDisplayMedicalTimes(times);
+//
+// Console.WriteLine();
+//
+// void FormatAndDisplayMedicalTimes(int[] times)
+// {
+//     foreach (int val in times)
+//     {
+//         string time = val.ToString();
+//         int len = time.Length;
+//
+//         if (len >= 3)
+//         {
+//             time = time.Insert(len - 2, ":");
+//         }
+//         else if (len == 2)
+//         {
+//             time = time.Insert(0, "0:");
+//         }
+//         else
+//         {
+//             time = time.Insert(0, "0:0");
+//         }
+//
+//         Console.Write($"{time} ");
+//     }  
+// }
+//
+// void AdjustTimes()
+// {
+//     for (int i = 0; i < times.Length; i++) 
+//     {
+//         times[i] = ((times[i] + diff)) % 2400;
+//     }
+// }
+
+// string IsValidIPV4(string ip)
+// {
+//     string[] segments = ip.Split('.', StringSplitOptions.RemoveEmptyEntries);
+//
+//     if (segments.Length != 4)
+//     {
+//         return "Invalid IP Address. Needs four segements";
+//     }
+//
+//     foreach (var segment in segments)
+//     {
+//         if (segment.StartsWith("0") && segment.Length > 1)
+//         {
+//             return "Invalid IP Address. No leading zeros";
+//         }
+//         
+//         if (int.TryParse(segment, out var number))
+//         {
+//             if (number < 0 || number > 255)
+//             {
+//                 return "Invalid IP Address. Segments must be between 0 and 255";
+//             }
+//         }
+//     }
+//
+//     return $"Yay {ip} is a valid IP Address! :)";
+// }
+//
+// string[] ipv4Input = {"107.31.1.5", "255.0.0.255", "555..0.555", "255...255"};
+//
+// foreach (var test in ipv4Input)
+// {
+//     Console.WriteLine(IsValidIPV4(test));
+// }
+
+
+// void SpeakFortune()
+// {
+//     Random random = new Random();
+//     int luck = random.Next(100);
+//
+//     string[] text = {"You have much to", "Today is a day to", "Whatever work you do", "This is an ideal time to"};
+//     string[] good = {"look forward to.", "try new things!", "is likely to succeed.", "accomplish your dreams!"};
+//     string[] bad = {"fear.", "avoid major decisions.", "may have unexpected outcomes.", "re-evaluate your life."};
+//     string[] neutral = {"appreciate.", "enjoy time with friends.", "should align with your values.", "get in tune with nature."};
+//
+//     Console.WriteLine("A fortune teller whispers the following words:");
+//     string[] fortune = (luck > 75 ? good : (luck < 25 ? bad : neutral));
+//     for (int i = 0; i < 4; i++) 
+//     {
+//         Console.Write($"{text[i]} {fortune[i]} ");
+//     }  
+// }
+//
+// SpeakFortune();
+// SpeakFortune();
+
+// int[] schedule = {800, 1200, 1600, 2000};
+//
+// void DisplayAdjustedTimes(int[] times, int currentGMT, int newGMT)
+// {
+//     int diff = 0;
+//
+//     if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
+//     {
+//         Console.WriteLine("Invalid GMT");
+//     }
+//     else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0) 
+//     {
+//         diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
+//     } 
+//     else 
+//     {
+//         diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
+//     }
+//
+//     for (int i = 0; i < times.Length; i++)
+//     {
+//         int newTime = (times[i] + diff) % 2400;
+//         Console.WriteLine($"{times[i]} -> {newTime}");
+//     }
+//
+// }
+//
+// DisplayAdjustedTimes(schedule, 6, -6);
+
+// string[] students = {"Jenna", "Ayesha", "Carlos", "Viktor"};
+// DisplayStudents(students);
+// DisplayStudents(new string[] {"Robert", "Mitchell"});
+//
+//
+// void DisplayStudents(string[] students)
+// {
+//     foreach (var student in students)
+//     {
+//         Console.Write($"{student}, ");
+//     }
+//     
+//     Console.WriteLine();
+// }
+//
+// const double pi = 3.14159;
+// PrintCircleInfo(12);
+// PrintCircleInfo(24);
+//
+// void PrintCircleInfo(int radius) 
+// {
+//     Console.WriteLine($"Circle with radius {radius}");
+//     PrintCircleArea(radius);
+//     PrintCircleCircumference(radius);
+// }
+//
+// void PrintCircleArea(int radius)
+// {
+//     double area = pi * (radius * radius);
+//     Console.WriteLine($"Area = {area}");
+// }
+//
+// void PrintCircleCircumference(int radius)
+// {
+//     double circumference = 2 * pi * radius;
+//     Console.WriteLine($"Circumference = {circumference}");}
+
+// int a = 3;
+// int b = 5;
+// int c = 0;
+//
+// void Multiply(int a, int b, int c)
+// {
+//     c = a * b;
+//     Console.WriteLine();
+// }
+
+// int[] array = {1, 2, 3, 4};
+
+// PrintArray(array);
+// Clear(array);
+// PrintArray(array);
+
+// string status = "Healthy";
+// Console.WriteLine($"Start: {status}");
+// SetHealth(status, false);
+// Console.WriteLine($"End: {status}");
+//
+// void PrintArray(int[] array)
+// {
+//     foreach (int a in array)
+//     {
+//         Console.Write($"{a}");
+//     }
+// }
+//
+// void Clear(int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         array[i] = 0;
+//     }
+// }
+//
+// void SetHealth(string status, bool isHealthy)
+// {
+//     status = (isHealthy ? "Healthy" : "Unhealthy");
+//     Console.WriteLine($"Middle: {status}");
+// }
+//
+// string[] guestList = {"Rebecca", "Nadia", "Noor", "Jonte"};
+// string[] rsvps = new string[10];
+// int count = 0;
+//
+// RSVP("Rebecca");
+// RSVP("Nadia", 2, "Nuts");
+// RSVP(name: "Linh", partySize: 2, inviteOnly: false);
+// RSVP("Tony", allergies: "Jackfruit", inviteOnly: true);
+// RSVP("Noor", 4, inviteOnly: false);
+// RSVP("Jonte", 2, "Stone fruit", false);
+// ShowRSVPs();
+//
+// void RSVP(string name, int partySize = 1, string allergies = "none", bool inviteOnly = true)
+// {
+//     if (inviteOnly)
+//     {
+//         bool found = false;
+//         foreach (var guest in guestList)
+//         {
+//             if (guest.Equals(name))
+//             {
+//                 found = true;
+//                 break;
+//             }
+//         }
+//
+//         if (!found)
+//         {
+//             Console.WriteLine($"Sorry, {name} is not on the guest list");
+//             return;
+//         }
+//     }
+//
+//     rsvps[count] = $"Name: {name}, \tParty Size: {partySize}, \tAllergies: {allergies}";
+//     count++;
+// }
+//
+// void ShowRSVPs()
+// {
+//     Console.WriteLine("\nTotal RSVPs:");
+//     for (int i = 0; i < count; i++)
+//     {
+//         Console.WriteLine(rsvps[i]);
+//     }
+// }
+
+string[,] corporate = 
 {
-    switch (i)
-    {
-        case 0:
-            animalSpecies = "dog";
-            animalID = "d1";
-            animalAge = "2";
-            animalPhysicalDescription =
-                "medium sized cream colored female golden retriever weighing about 45 pounds. housebroken.";
-            animalPersonalityDescription =
-                "loves to have her belly rubbed and likes to chase her tail. gives lots of kisses.";
-            animalNickname = "lola";
-            suggestedDonation = "85.00";
-            break;
+    {"Robert", "Bavin"}, {"Simon", "Bright"},
+    {"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
+    {"Sarah", "Delucchi"}, {"Sinan", "Ali"}};
 
-        case 1:
-            animalSpecies = "dog";
-            animalID = "d2";
-            animalAge = "9";
-            animalPhysicalDescription =
-                "large reddish-brown male golden retriever weighing about 85 pounds. housebroken.";
-            animalPersonalityDescription =
-                "loves to have his ears rubbed when he greets you at the door, or at any time! loves to lean-in and give doggy hugs.";
-            animalNickname = "gus";
-            suggestedDonation = "49.99";
-            break;
+string[,] external = 
+{
+    {"Vinnie", "Ashton"}, {"Cody", "Dysart"},
+    {"Shay", "Lawrence"}, {"Daren", "Valdes"}
+};
 
-        case 2:
-            animalSpecies = "cat";
-            animalID = "c3";
-            animalAge = "1";
-            animalPhysicalDescription = "small white female weighing about 8 pounds. litter box trained.";
-            animalPersonalityDescription = "friendly";
-            animalNickname = "snow";
-            suggestedDonation = "40.00";
-            break;
+string externalDomain = "hayworth.com";
 
-        case 3:
-            animalSpecies = "cat";
-            animalID = "c4";
-            animalAge = "";
-            animalPhysicalDescription = "";
-            animalPersonalityDescription = "";
-            animalNickname = "lion";
-            suggestedDonation = "";
-
-            break;
-
-        default:
-            animalSpecies = "";
-            animalID = "";
-            animalAge = "";
-            animalPhysicalDescription = "";
-            animalPersonalityDescription = "";
-            animalNickname = "";
-            suggestedDonation = "";
-            break;
-    }
-
-    ourAnimals[i, 0] = "ID #: " + animalID;
-    ourAnimals[i, 1] = "Species: " + animalSpecies;
-    ourAnimals[i, 2] = "Age: " + animalAge;
-    ourAnimals[i, 3] = "Nickname: " + animalNickname;
-    ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
-    ourAnimals[i, 5] = "Personality: " + animalPersonalityDescription;
-
-    if (!decimal.TryParse(suggestedDonation, out decimalDonation))
-    {
-        decimalDonation = 45.00m; // if suggestedDonation NOT a number, default to 45.00
-    }
-
-    ourAnimals[i, 6] = $"Suggested Donation: {decimalDonation:C2}";
+for (int i = 0; i < corporate.GetLength(0); i++) 
+{
+    DisplayEmail(first: corporate[i,0], last: corporate[i,1]);
 }
 
-// top-level menu options
-do
+for (int i = 0; i < external.GetLength(0); i++) 
 {
-    // NOTE: the Console.Clear method is throwing an exception in debug sessions
-    Console.Clear();
+    DisplayEmail(first: external[i,0], last: external[i,1], domain: externalDomain);
+}
 
-    Console.WriteLine("Welcome to the Contoso PetFriends app. Your main menu options are:");
-    Console.WriteLine(" 1. List all of our current pet information");
-    Console.WriteLine(" 2. Display all dogs with a specified characteristic");
-    Console.WriteLine();
-    Console.WriteLine("Enter your selection number (or type Exit to exit the program)");
+void DisplayEmail(string first, string last, string domain = "contoso.com") 
+{
+    string email = first.Substring(0, 2) + last;
+    email = email.ToLower();
+    Console.WriteLine($"{email}@{domain}");
+}
 
-    readResult = Console.ReadLine();
-    if (readResult != null)
-    {
-        menuSelection = readResult.ToLower();
-    }
 
-    // switch-case to process the selected menu option
-    switch (menuSelection)
-    {
-        case "1":
-            // list all pet info
-            for (int i = 0; i < maxPets; i++)
-            {
-                if (ourAnimals[i, 0] != "ID #: ")
-                {
-                    Console.WriteLine();
-                    for (int j = 0; j < 7; j++)
-                    {
-                        Console.WriteLine(ourAnimals[i, j].ToString());
-                    }
-                }
-            }
-
-            Console.WriteLine("\r\nPress the Enter key to continue");
-            readResult = Console.ReadLine();
-
-            break;
-
-        case "2":
-            // #1 Display all dogs with a multiple search characteristics
-
-            string[] dogCharacteristics = Array.Empty<string>();
-
-            while (dogCharacteristics.Length == 0)
-            {
-                // #2 have user enter multiple comma separated characteristics to search for
-                Console.WriteLine($"\r\nEnter a comma separated list of desired dog characteristic to search for");
-                readResult = Console.ReadLine();
-                if (readResult != null)
-                {
-                    string[] submittedCharacterists = readResult.Split(',');
-                    Array.Resize(ref dogCharacteristics, submittedCharacterists.Length);
-                    dogCharacteristics = submittedCharacterists;
-                    for (int i = 0; i < dogCharacteristics.Length; i++)
-                    {
-                        dogCharacteristics[i] = dogCharacteristics[i].ToLower().Trim();
-                    }
-
-                    foreach (var characteristic in dogCharacteristics)
-                    {
-                        Console.WriteLine(characteristic);
-                    }
-                }
-            }
-
-            bool noMatchesDog = true;
-            bool matchesCurrentDog = false;
-            string dogDescription = "";
-
-            // #4 update to "rotating" animation with countdown
-            string[] searchingIcons = {" |", " /", "--", " \\", " *"};
-
-            // loop ourAnimals array to search for matching animals
-            for (int i = 0; i < maxPets; i++)
-            {
-                if (ourAnimals[i, 1].Contains("dog"))
-                {
-                    // Search combined descriptions and report results
-                    dogDescription = ourAnimals[i, 4] + "\r\n" + ourAnimals[i, 5];
-                    foreach (var dogCharacteristic in dogCharacteristics)
-                    {
-                        for (int j = 2; j > -1 ; j--)
-                        {
-                            // #5 update "searching" message to show countdown
-                            foreach (string icon in searchingIcons)
-                            {
-                                Console.Write($"\rsearching our dog {ourAnimals[i, 3]} for {dogCharacteristic.Trim()} {icon} {j.ToString()}");
-                                Thread.Sleep(100);
-                            }
-                                
-                            Console.Write($"\r{new String(' ', Console.BufferWidth)}");
-                        }
-
-                        // #3a iterate submitted characteristic terms and search description for each term
-
-                        if (dogDescription.Contains(dogCharacteristic))
-                        {
-                            // #3b update message to reflect term 
-                            // #3c set a flag "this dog" is a match
-                            Console.WriteLine($"\nOur dog {ourAnimals[i, 3]} matches your search for {dogCharacteristic}!");
-
-                            noMatchesDog = false;
-                            matchesCurrentDog = true;
-                        }
-                    }
-
-                    // #3d if "this dog" is match write match message + dog description
-                    if (matchesCurrentDog)
-                    {
-                       Console.WriteLine($"\nNickname: {ourAnimals[i, 3]} ({ourAnimals[i, 0]})"); 
-                       Console.WriteLine($"Physical Description: {ourAnimals[i, 4]}"); 
-                       Console.WriteLine($"Personality: {ourAnimals[i, 5]}");
-                       matchesCurrentDog = false;
-                    }
-                }
-            }
-
-            if (noMatchesDog)
-            {
-                Console.WriteLine($"None of our dogs are a match found for: {readResult}");
-            }
-
-            Console.WriteLine("\n\rPress the Enter key to continue");
-            readResult = Console.ReadLine();
-
-            break;
-
-        default:
-            break;
-    }
-} while (menuSelection != "exit");
